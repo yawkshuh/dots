@@ -15,4 +15,9 @@ copyq &
 solaar --window=hide &
 dunst &
 
+# Disable things like turning off the monitor
+xset s off -dpms
+
+setxkbmap -layout us
+xsetroot -cursor_name left_ptr
 exec dwm
