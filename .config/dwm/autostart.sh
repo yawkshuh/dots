@@ -9,5 +9,6 @@ pasystray &
 nitrogen --restore &
 copyq &
 solaar --window=hide &
+dunst &
 
 exec dwm

@@ -1,0 +1,23 @@
+[global]
+separator_color = frame
+
+[urgency_low]
+urgency = low
+frame_color = "#4c566a"
+background = "#4c566a"
+foreground = "#f2f2f2"
+timeout= 3 
+
+[urgency_normal]
+urgency = normal
+frame_color = "#434c5e"
+background = "#434c5e"
+foreground = "#f2f2f2"
+timeout = 4 
+
+[urgency_critical]
+urgency = critical
+frame_color = "#2e3440"
+background = "#2e3440"
+foreground = "#f2f2f2"
+timeout = 8 
