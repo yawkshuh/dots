@@ -14,6 +14,7 @@ nitrogen --restore &
 copyq &
 solaar --window=hide &
 dunst &
+numlockx &
 
 # Disable things like turning off the monitor
 xset s off -dpms
