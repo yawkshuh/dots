@@ -15,6 +15,7 @@ copyq &
 solaar --window=hide &
 dunst &
 numlockx &
+redshift -l 43.46:11.88 -t 6500:2600 -b 1.0:0.8 &
 
 # Disable things like turning off the monitor
 xset s off -dpms
