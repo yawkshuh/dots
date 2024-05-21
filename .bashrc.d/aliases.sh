@@ -1,4 +1,5 @@
 # ls
+alias ls='ls --color=auto'
 alias ll='ls -lah'
 
 # replace cat with bat (batcat if on debian)
@@ -14,6 +15,7 @@ alias mkdir='mkdir -p'
 
 # Git
 alias gs='git status'
-alias gl='git log --oneline --graph --decorate --all'
+alias gl='git --no-pager log --oneline --graph --decorate --all -15'
+alias gll='git log --oneline --graph --decorate --all' # Use --no-pager here as well?
 alias gaa='git add -A'
 alias gc='git commit'
