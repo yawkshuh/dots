@@ -12,14 +12,20 @@ alias gll='git log --oneline --graph --decorate --all' # Use --no-pager here as 
 alias gaa='git add -A'
 alias gc='git commit'
 
-# replace cat with bat (batcat if on debian)
+# Replace Vim with Neovim
+if [ -x "$(command -v nvim)" ]; then
+  alias vim='nvim'
+fi
+
+if [ -x "$(command -v neovide)" ]; then
+    alias nv='neovide'
+fi
+
+alias v='vim'
+
+# Replace cat with bat (batcat if on debian)
 if [ -f "/etc/debian_version" ]; then
 	alias cat='batcat --paging=never'
 else
 	alias cat='bat --paging=never'
-fi
-
-# replace vim with neovim
-if [ -x "$(command -v nvim)" ]; then
-  alias vim='nvim'
 fi
