@@ -24,6 +24,7 @@ vim.opt.rtp:prepend(basepath .. "/*")
 -- Plugins --
 add_packages({
     "ellisonleao/gruvbox.nvim",
+    "nvim-lualine/lualine.nvim",
     "lewis6991/gitsigns.nvim",
     "nvim-tree/nvim-tree.lua",
     "nvim-lua/plenary.nvim",
