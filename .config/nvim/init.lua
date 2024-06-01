@@ -65,7 +65,14 @@ require('gruvbox').setup({
         GruvboxAquaSign = { bg = "" },
     },
 })
-require("lualine").setup()
+require("lualine").setup({
+    options = {
+        icons_enabled = true,
+        component_separators = '|',
+        section_separators = '',
+    }
+})
+
 require("gitsigns").setup()
 require("nvim-tree").setup({ view = { side = "right" } })
 require("telescope").setup()
