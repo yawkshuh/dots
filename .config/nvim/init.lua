@@ -84,6 +84,7 @@ local o   = vim.opt
 vim.g.mapleader = ' '
 
 o.number = true
+o.relativenumber = true
 o.cursorline = true
 
 o.scrolloff = 10
@@ -93,6 +94,11 @@ o.shiftwidth = 4
 o.expandtab = true
 
 o.signcolumn = "yes"
+
+o.ignorecase = true
+o.smartcase = true
+
+o.shortmess:append({ I = true })
 
 -- Disable arrow keys
 vim.keymap.set('n', '<Up>', '<nop>', { noremap = true })
@@ -180,6 +186,7 @@ vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
 vim.keymap.set('n', '<leader>fb', builtin.buffers,    {})
 vim.keymap.set('n', '<leader>fg', builtin.live_grep,  {})
 vim.keymap.set('n', '<leader>fh', builtin.help_tags,  {})
+vim.keymap.set('n', '<leader>gb', builtin.git_branches, {})
 
 -- Nvim Tree Config --
 vim.keymap.set('n', '<leader>n', ':NvimTreeOpen<cr>', {})
