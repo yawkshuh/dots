@@ -1,20 +1,33 @@
 -- Package Manager --
 local basepath = vim.fn.stdpath("data") .. "/git-plugins/"
 
+local function clone_package(repo, name)
+    print("Cloning package: " .. repo)
+
+    vim.fn.system({
+        "git",
+        "clone",
+        "--depth=1",
+        "https://github.com/" .. repo,
+        basepath .. name
+    })
+end
+
 local function add_packages(packages)
-    for key, repo in pairs(packages) do
-        local plugin = vim.split(repo, "/")[2]
+    for key, plugin in pairs(packages) do
+        local repository = ""
+        local name = ""
 
-        if not (vim.uv or vim.loop).fs_stat(basepath .. plugin) then
-            print("Cloning package: " .. plugin)
+        if type(plugin) == "string" then
+            repository = plugin
+            name = vim.split(plugin, "/")[2]
+        elseif type(plugin) == "table" then
+            repository = plugin[1]
+            name = plugin["as"] or vim.split(repository, "/")[2]
+        end
 
-            vim.fn.system({
-                "git",
-                "clone",
-                "--depth=1",
-                "https://github.com/" .. repo,
-                basepath .. plugin
-            })
+        if not (vim.uv or vim.loop).fs_stat(basepath .. name) then
+            clone_package(repository, name)
         end
     end
 end
@@ -23,6 +36,7 @@ vim.opt.rtp:prepend(basepath .. "/*")
 
 -- Plugins --
 add_packages({
+    { "catppuccin/nvim", as = "catppuccin" },
     "ellisonleao/gruvbox.nvim",
     "nvim-lualine/lualine.nvim",
     "lewis6991/gitsigns.nvim",
@@ -31,6 +45,7 @@ add_packages({
     "nvim-telescope/telescope.nvim",
     "tpope/vim-fugitive",
 
+    -- LSP --
     "neovim/nvim-lspconfig",
     "hrsh7th/nvim-cmp",
     "hrsh7th/cmp-nvim-lsp",
@@ -79,7 +94,7 @@ vim.keymap.set('n', '<Right>', '<nop>', { noremap = true })
 vim.keymap.set('n', '<Left>', '<nop>', { noremap = true })
 
 o.background = "dark"
-vim.cmd([[colorscheme gruvbox]])
+vim.cmd([[colorscheme catppuccin-mocha]])
 
 -- lsp config --
 local lspconfig = require("lspconfig")
