@@ -18,7 +18,7 @@ if [ -x "$(command -v nvim)" ]; then
 fi
 
 if [ -x "$(command -v neovide)" ]; then
-    alias nv='neovide'
+    alias nv='neovide --fork'
 fi
 
 alias v='vim'
