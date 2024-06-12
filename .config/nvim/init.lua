@@ -111,31 +111,14 @@ vim.cmd([[colorscheme catppuccin-mocha]])
 
 -- lsp config --
 local lspconfig = require("lspconfig")
-local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
-lspconfig.gopls.setup({
-    capabilities = capabilities,
-})
+local cmp_lsp = require("cmp_nvim_lsp")
+local capabilities = cmp_lsp.default_capabilities()
+cmp_lsp.setup()
 
 lspconfig.omnisharp.setup({
-    cmd = { "/home/riccardo/Downloads/omnisharp-linux-x64-net6.0/OmniSharp" },
-    settings = {
-        FormattingOptions = {
-            EnableEditorConfigSupport = true,
-            OrganizeImports = nil,
-        },
-        MsBuild = {
-            LoadProjectsOnDemand = nil,
-        },
-        RoslynExtensionsOptions = {
-            EnableAnalyzersSupport = nil,
-            EnableImportCompletion = nil,
-            AnalyzeOpenDocumentsOnly = nil,
-        },
-        Sdk = {
-            IncludePrereleases = true,
-        },
-    },
+    cmd = { "dotnet", "C:\\Users\\Riccardo\\Downloads\\omnisharp\\OmniSharp.dll" },
+    capabilities = capabilities
 })
 
 vim.opt.completeopt = { "menu", "menuone", "noselect" }
@@ -160,7 +143,6 @@ cmp.setup({
     sources = cmp.config.sources({
         { name = "path" },
         { name = "nvim_lsp", keyword_length = 1 },
-        { name = "buffer", keyword_length = 3 },
     }, {
         { name = "buffer" },
     })
