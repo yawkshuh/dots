@@ -70,6 +70,10 @@ require("lualine").setup({
         icons_enabled = true,
         component_separators = '|',
         section_separators = '',
+    },
+    sections = {
+        lualine_a = { "buffers" },
+        lualine_x = { "mode", "encoding", "fileformat", "filetype" }
     }
 })
 
@@ -100,11 +104,20 @@ o.smartcase = true
 
 o.shortmess:append({ I = true })
 
+o.showmode = false -- We show it using lualine
+
 -- Disable arrow keys
 vim.keymap.set('n', '<Up>', '<nop>', { noremap = true })
 vim.keymap.set('n', '<Down>', '<nop>', { noremap = true })
 vim.keymap.set('n', '<Right>', '<nop>', { noremap = true })
 vim.keymap.set('n', '<Left>', '<nop>', { noremap = true })
+
+-- Clear search highlights when pressing Esc in normal mode
+vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
+
+vim.keymap.set("n", "[d", vim.diagnostic.goto_prev)
+vim.keymap.set("n", "]d", vim.diagnostic.goto_next)
+vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float)
 
 o.background = "dark"
 vim.cmd([[colorscheme catppuccin-mocha]])
