@@ -24,5 +24,9 @@ if [ -d ~/.bashrc.d ]; then
 fi
 unset rc
 
+if [ -x "$(command -v tmux)" ] && [ -z "$TMUX" ] && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]]; then
+    exec tmux
+fi
+
 eval "$(starship init bash)"
 eval "$(zoxide init bash)"
