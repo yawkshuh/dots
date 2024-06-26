@@ -44,6 +44,7 @@ add_packages({
     "nvim-lua/plenary.nvim",
     "nvim-telescope/telescope.nvim",
     "tpope/vim-fugitive",
+    "windwp/nvim-autopairs",
 
     -- LSP --
     "neovim/nvim-lspconfig",
@@ -81,6 +82,7 @@ require("gitsigns").setup()
 require("nvim-tree").setup({ view = { side = "right" } })
 require("telescope").setup()
 
+require("nvim-autopairs").setup()
 -- Config --
 local api = vim.api
 local o   = vim.opt
